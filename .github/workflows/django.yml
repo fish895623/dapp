@@ -1,26 +1,18 @@
 name: Django CI
 
-on: [ "push" ]
+on: ["push"]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: home
     strategy:
-      max-parallel: 4
       matrix:
         python-version: [3.9]
 
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4.5.0
-      with:
-        python-version: ${{ matrix.python-version }}
+      - uses: actions/checkout@v3
 
-    - name: Poetry setup
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
-        which poetry
-
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: ${{ matrix.python-version }}
