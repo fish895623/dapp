@@ -16,3 +16,12 @@ jobs:
         uses: actions/setup-python@v4.5.0
         with:
           python-version: ${{ matrix.python-version }}
+
+      - name: Docker Compose Setup
+        uses: KengoTODA/actions-setup-docker-compose@v1.0.9
+        with:
+          version: "2.14.2"
+
+      - name: Docker build
+        run: |
+          docker compose build
